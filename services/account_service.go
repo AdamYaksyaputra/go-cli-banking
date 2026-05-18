@@ -3,6 +3,8 @@ package services
 import (
 	"fmt"
 	"os"
+
+	"go-cli-banking/utils"
 )
 
 func CreateAccount(name string, amount float64) {
@@ -34,6 +36,13 @@ func CreateAccount(name string, amount float64) {
 
 	if err != nil {
 		fmt.Println("Failed to write balance")
+		return
+	}
+
+	err = utils.AddHistory(name, fmt.Sprintf("Account created with balance %.2f", amount))
+
+	if err != nil {
+		fmt.Println("Failed to add to history")
 		return
 	}
 

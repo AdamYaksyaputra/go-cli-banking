@@ -60,4 +60,22 @@ func Transfer(from string, to string, amount float64) {
 		from,
 		to,
 	)
+
+	utils.AddHistory(
+		from,
+		fmt.Sprintf(
+			"Transfer sent to %s: %.2f",
+			to,
+			amount,
+		),
+	)
+
+	utils.AddHistory(
+		to,
+		fmt.Sprintf(
+			"Transfer received from %s: %.2f",
+			from,
+			amount,
+		),
+	)
 }

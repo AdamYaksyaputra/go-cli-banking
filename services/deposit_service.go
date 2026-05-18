@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"os"
 	"time"
+
+	"go-cli-banking/utils"
 )
 
 func AddDeposit(name string, amount float64) {
@@ -45,5 +47,13 @@ func AddDeposit(name string, amount float64) {
 		"Deposit %.2f added for %s\n",
 		amount,
 		name,
+	)
+
+	utils.AddHistory(
+		name,
+		fmt.Sprintf(
+			"Deposit added: %.2f",
+			amount,
+		),
 	)
 }

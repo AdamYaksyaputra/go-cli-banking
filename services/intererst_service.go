@@ -8,6 +8,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"go-cli-banking/utils"
 )
 
 func AccrueInterest() {
@@ -94,7 +96,18 @@ func AccrueInterest() {
 			"Interest accrued for %s\n",
 			file.Name(),
 		)
+
+		accountName := strings.TrimSuffix(
+			file.Name(),
+			".txt",
+		)
+
+		utils.AddHistory(
+			accountName,
+			"Interest accrued on deposits",
+		)
 	}
 
 	fmt.Println("Interest accrual completed")
+
 }
